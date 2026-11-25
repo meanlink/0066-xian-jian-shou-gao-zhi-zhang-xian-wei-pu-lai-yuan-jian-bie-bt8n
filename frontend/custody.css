@@ -1,0 +1,4 @@
+.return-board{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:1.4rem;align-items:start}
+.return-board section .panel{margin-bottom:.8rem}
+.return-board aside{border-top:6px double var(--s-accent)}
+@media(max-width:750px){.return-board{grid-template-columns:1fr}}

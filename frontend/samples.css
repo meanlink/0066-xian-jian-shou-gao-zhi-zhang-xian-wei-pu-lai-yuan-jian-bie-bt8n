@@ -1,0 +1,7 @@
+.sample-bench{display:grid;grid-template-columns:2.1fr 1fr;gap:1.2rem;align-items:start}
+.sample-slip{border-bottom:2px dotted var(--s-line);padding:.8rem 0}
+.sample-slip p{margin:.4rem 0}
+.fiber-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;margin:.4rem 0 0}
+.fiber-strip dt{font-size:.78rem}
+.fiber-strip dd{display:flex;align-items:center;gap:.3rem;margin:0}.fiber-strip meter{width:100%}
+@media(max-width:700px){.sample-bench{grid-template-columns:1fr}.fiber-strip{grid-template-columns:repeat(2,1fr)}}

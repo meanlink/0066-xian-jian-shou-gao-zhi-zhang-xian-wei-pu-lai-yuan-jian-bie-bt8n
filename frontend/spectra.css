@@ -1,0 +1,5 @@
+.match-book{display:grid;grid-template-columns:minmax(14rem,.8fr) minmax(0,2fr);gap:1.4rem;align-items:start}
+.match-book fieldset{margin:0;display:grid;gap:.35rem;border-color:var(--s-line)}
+.match-book fieldset label{display:flex;gap:.5rem;align-items:center}
+.match-line{padding:.9rem 0;border-bottom:3px double var(--s-line)}
+@media(max-width:760px){.match-book{grid-template-columns:1fr}}

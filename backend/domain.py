@@ -5,7 +5,7 @@ from samples_api import router as samples
 from reference_api import router as reference
 from spectra_api import router as spectra
 from custody_api import router as custody
-from match_experiment import run_job
+from match_experiment import KIND, mark_failed, run_job
 
 router = APIRouter(prefix="/api")
 router.include_router(samples)

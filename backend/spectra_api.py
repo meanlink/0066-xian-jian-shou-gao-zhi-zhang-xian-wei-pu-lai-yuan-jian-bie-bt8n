@@ -1,7 +1,8 @@
 from typing import Literal
 from fastapi import APIRouter,Depends,HTTPException
 from pydantic import BaseModel,Field
-from core import db,enqueue,require
+from core import db,require
+from match_experiment import list_matches,queue_comparison
 router=APIRouter(prefix="/spectra")
 
 class Features(BaseModel):
@@ -10,11 +11,11 @@ class Features(BaseModel):
 @router.get("")
 def results(_=Depends(require())):
     with db() as cx:
-        return cx.execute("SELECT * FROM spectrum_matches ORDER BY case_code").fetchall()
+        return list_matches(cx)
 
 @router.post("/{case}")
 def calculate(case:str,data:Features,_=Depends(require("operator","reviewer"))):
     if len(set(data.features))!=len(data.features):
         raise HTTPException(422,"特征不能重复")
     with db() as cx:
-        return {"job_id":enqueue(cx,"spectrum-distance",{"case":case,**data.model_dump()})}
+        return queue_comparison(cx,case,data.features)
